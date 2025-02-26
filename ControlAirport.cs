@@ -16,32 +16,32 @@ namespace macron {
            return TurnAirport("off");
 	}
 
-        public static bool TurnAirportOn() {
-           return TurnAirport("on");
+        public static bool ResetSettings() {
+           return TurnAirport("clear");
 	}
-
-        public static bool TurnAirport(string onOrOff) {
-		//System.Console.WriteLine(onOrOff);
-		//string[] newCrontabs = new string[] { };
+     
+        public static bool TurnAirport(string onOffOrClear) {
 		List<string> newCrontabs = new List<string>(); 
-foreach ( var ct in getCrontab()) {
-   //if (String.IsNullOrWhiteSpace(ct)) 
-   //    continue;
-   if (!(ct.Contains("networksetup") && ct.Contains("-setairportpower"))) {
-      //Array.Resize(ref newCrontabs, newCrontabs.Length + 1);
-      //newCrontabs[^1] = ct; 
-      newCrontabs.Add(ct.TrimEnd()); 
-   }
-};
+	foreach ( var ct in getCrontab()) {
+	   if (!(ct.Contains("networksetup") && ct.Contains("-setairportpower"))) {
+	      //Array.Resize(ref newCrontabs, newCrontabs.Length + 1);
+	      //newCrontabs[^1] = ct; 
+	      newCrontabs.Add(ct.TrimEnd()); 
+	   }
+	};
       //if (newCrontabs[-1].Trim()){
       // //  newCrontabs.RemoveAt(newCrontabs.Count - 1);
      // }
 
-      if (onOrOff == "on") {
+      if (onOffOrClear == "clear") {
+        Console.WriteLine("Clearing airport cron setting");
+	// RUN.RunCommand( "networksetup", "-setairportpower airport on");
+	// newCrontabs.Add( "@reboot networksetup -setairportpower airport on");
+      } else if (onOffOrClear == "on") {
         Console.WriteLine("Turning airport on");
 	RUN.RunCommand( "networksetup", "-setairportpower airport on");
 	newCrontabs.Add( "@reboot networksetup -setairportpower airport on");
-      } else if (onOrOff == "off") {
+      } else if (onOffOrClear == "off") {
         Console.WriteLine("Turning airport off");
 	RUN.RunCommand( "networksetup", "-setairportpower airport off");
 	newCrontabs.Add( "@reboot networksetup -setairportpower airport off");

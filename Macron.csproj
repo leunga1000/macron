@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
 <PublishSingleFile>true</PublishSingleFile>
+<ApplicationIcon>macron.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

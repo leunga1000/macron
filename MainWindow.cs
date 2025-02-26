@@ -8,7 +8,8 @@ namespace macron
     {
         [UI] private Label _label1 = null;
         [UI] private Button _buttonAirportOff = null;
-        [UI] private Button _buttonAirportOn = null;
+        [UI] private Button _buttonAirportClear = null;
+        [UI] private Button _buttonExit = null;
 
         private int _counter;
 
@@ -20,7 +21,8 @@ namespace macron
 
             DeleteEvent += Window_DeleteEvent;
             _buttonAirportOff.Clicked += ButtonAirportOff_Clicked;
-            _buttonAirportOn.Clicked += ButtonAirportOn_Clicked;
+            _buttonAirportClear.Clicked += ButtonAirportClear_Clicked;
+            _buttonExit.Clicked += ButtonExit_Clicked;
         }
 
         private void Window_DeleteEvent(object sender, DeleteEventArgs a)
@@ -30,15 +32,24 @@ namespace macron
 
         private void ButtonAirportOff_Clicked(object sender, EventArgs a)
         {
-            _counter++;
-            _label1.Text = "Turning Airport Off" + _counter + " time(s).";
+            // _counter++;
+            // _label1.Text = "Turning Airport Off" + _counter + " time(s).";
             ControlAirport.TurnAirportOff();
+            _label1.Text = "Turned Airport Off";
         }
 
-        private void ButtonAirportOn_Clicked(object sender, EventArgs a)
+        private void ButtonAirportClear_Clicked(object sender, EventArgs a)
         {
-            _label1.Text = "Turning Airport On";
-            ControlAirport.TurnAirportOn();
+            _label1.Text = "Clearing settings";
+            ControlAirport.ResetSettings();
+            _label1.Text = "Cleared Airport Settings";
+        }
+
+        private void ButtonExit_Clicked(object sender, EventArgs a)
+        {
+            // _label1.Text = "Exit";
+            this.Destroy();  // flash red full screen
+            Application.Quit();
         }
     }
 }
