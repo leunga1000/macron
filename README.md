@@ -2,32 +2,26 @@
 
 Utility to edit your cron file automatically.
 
+
 ## Example situation
 
-On mac wifi keeps turning back on at start up, but no need because have a usb ethernet connection.
+On mac wifi keeps turning back on at start up, but no need for this because you have a usb ethernet connection.
 
 Turns off airport/wifi adapter for mac and also schedules an alarm (crontab) task to turn it off at restart too.
 
-## To do this manually
-
-Open Terminal
-
-crontab -e
-
-you are in vi, a text editor
-
-type i to enter insert mode. copy the following command into the file
-
-@reboot networksetup -setairportpower airport off
-
-type escape to exit insert mode
-
-type :wq  to save the file and quit
-
-done
 
 
-## To do this with the program 
-Download the binary in arm64/amd64 and run it
+## Downloading the program
 
-You will be asked for your password for authorisation
+Arm Macs https://macron-app.b-cdn.net/arm64/Macron
+
+Intel Macs https://macron-app.b-cdn.net/amd64/Macron
+
+I have only tested on an intel mac.
+
+
+## Other programs
+
+There's also the Amphetamine app for keeping macbook on when you close the lid for use with a screen / keyboard.
+
+https://apps.apple.com/us/app/amphetamine/id937984704?mt=12
